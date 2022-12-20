@@ -193,6 +193,6 @@ codespaces_setenv:
 	cd ../qemu-7.0.0 && sudo make install
 	qemu-system-riscv64 --version
 	qemu-riscv64 --version
-	curl https://sh.rustup.rs -sSf | sh -s -- -y
-	/bin/zsh && source /home/codespace/.cargo/env
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+	source ${HOME}/.cargo/env
 	rustc --version

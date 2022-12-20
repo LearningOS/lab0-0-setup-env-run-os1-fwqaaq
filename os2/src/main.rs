@@ -16,6 +16,7 @@ mod syscall;
 mod trap;
 
 core::arch::global_asm!(include_str!("entry.asm"));
+// 构建时 build.rs 产生的用户程序汇编
 core::arch::global_asm!(include_str!("link_app.S"));
 
 fn clear_bss() {

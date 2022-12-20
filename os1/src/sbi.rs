@@ -8,6 +8,8 @@ const SBI_SHUTDOWN: usize = 8;
 #[inline(always)]
 fn sbi_call(which: usize, arg0: usize, arg1: usize, arg2: usize) -> usize {
     let mut ret;
+    // asm! 宏可以将汇编代码嵌入到局部的函数上下文中。相比 global_asm!，
+    // asm! 宏可以获取上下文中的变量信息并允许嵌入的汇编代码对这些变量进行操作
     unsafe {
         core::arch::asm!(
             "li x16, 0",

@@ -40,11 +40,14 @@ pub const SYSCALL_CONDVAR_CREATE: usize = 471;
 pub const SYSCALL_CONDVAR_SIGNAL: usize = 472;
 pub const SYSCALL_CONDVAR_WAIT: usize = 473;
 
+// 在函数上下文中，输入参数数组 args 和变量 id 保存系统调用参数和系统调用 ID ，
+// 而变量 ret 保存系统调用返回值
 pub fn syscall(id: usize, args: [usize; 3]) -> isize {
     let mut ret: isize;
     unsafe {
         core::arch::asm!(
-            "ecall",
+            "ecall", // 嵌入 ecall 指令来触发系统调用
+            //  a0~a2 和 a7 作为输入寄存器分别表示系统调用参数和系统调用 ID 
             inlateout("x10") args[0] => ret,
             in("x11") args[1],
             in("x12") args[2],

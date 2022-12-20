@@ -9,7 +9,6 @@
     .globl __alltraps
     .globl __restore
     .align 2
-# 保存 trap 上下文
 __alltraps:
     csrrw sp, sscratch, sp
     # now sp->kernel stack, sscratch->user stack

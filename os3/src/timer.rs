@@ -9,7 +9,7 @@ pub fn get_time() -> usize {
     time::read()
 }
 
-pub fn get_time_us() -> usize {
+pub fn get_time_ms() -> usize {
     time::read() / (CLOCK_FREQ / MICRO_PER_SEC)
 }
 
